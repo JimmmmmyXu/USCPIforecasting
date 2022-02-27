@@ -15,11 +15,11 @@ Graph1: Over time plot.
 
 KPSS ADF test1:
 
-__________ P value
+  __________ P value
 
-KPSS test: 0.01
+  KPSS test: 0.01
 
-ADF test: 0.99
+  ADF test: 0.99
 
 KPSS: h0: has a unit root. h1: no unit root. 
 
@@ -96,6 +96,7 @@ _________________RMSE
 ARIMA(11,1,12): 1.10775
 
 ARIMA(2,1,0):2.09223
+
 
 
 
