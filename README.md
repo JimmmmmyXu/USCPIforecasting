@@ -1,6 +1,18 @@
 # USCPIforecasting
 This project is about forecasting US consumer price index. "The level of inflation is a serious impediment to economic recovery". The best way to understand inflation is to use CPI. 
 
+```
+View(CPI_U1)
+CPIdata <-CPI_U1$`CPI`
+summary(CPIdata)
+length(CPIdata)
+inds <- seq(as.Date("2011-01-01"), as.Date("2021-09-01"), by = "month")
+CPIseries<-ts(CPIdata,start=c(2011, as.numeric(format(inds[1], "%j"))),frequency=12)
+plot.ts(CPIseries,main="CPI over time", ylab="CPI value", col="blue")
+
+kpss.test(CPIdata)
+```
+
 ![image](https://user-images.githubusercontent.com/100450841/155900844-1449b655-5840-47fe-91ec-eea6d55ad3f9.png)
 
 CPI rose rapidly then fell to the lowest in 2008(financial crisis). In 2021, there is an abnormal rapidly rose showed in this year.
@@ -12,6 +24,7 @@ Dataset is used on U.S. Bureau of labor statistics,all items in U.S. city averag
 ![image](https://user-images.githubusercontent.com/100450841/155901269-b092c40f-da78-4c26-89be-e626621012ea.png)
 
 Graph1: Over time plot.
+
 
 KPSS ADF test1:
 
@@ -29,7 +42,7 @@ KPSS cannot reject null, ADF reject null
 
 ![image](https://user-images.githubusercontent.com/100450841/155901401-1830e928-64c7-40d7-a8cb-37d86af19238.png)
 
-Graph2: Differenced and Logged Consumer Price Index Plot
+Graph2: Differences and Logged Consumer Price Index Plot
 
 Much smooth than before.
 
