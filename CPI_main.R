@@ -7,9 +7,12 @@ library(tseries)
 library(fGarch)
 library(moments)
 library(TSstudio)
-CPI_U1 <- read_excel("~/Documents/CPI_U1.xlsx",
+
+# please save your data into a folder called data.
+
+CPI_U1 <- read_excel("~/data/CPI_U1.xlsx",
                      range = "A1:B131")
-CPI_U1 <- read_excel("~/Documents/CPI_U1.xlsx",
+CPI_U1 <- read_excel("~/data/CPI_U1.xlsx",
                      range = "A1:B131")
 View(CPI_U1)
 CPIdata <-CPI_U1$`CPI`
