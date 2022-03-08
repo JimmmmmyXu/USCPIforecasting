@@ -1,6 +1,16 @@
 # USCPIforecasting
 This project is about forecasting US consumer price index. "The level of inflation is a serious impediment to economic recovery". The best way to understand inflation is to use CPI. 
 
+
+
+![image](https://user-images.githubusercontent.com/100450841/155900844-1449b655-5840-47fe-91ec-eea6d55ad3f9.png)
+
+CPI rose rapidly then fell to the lowest in 2008(financial crisis). In 2021, there is an abnormal rapidly rose showed in this year.
+
+![image](https://user-images.githubusercontent.com/100450841/155901204-3c600cf2-6bbd-4cf2-bbf1-4d7068eb6e09.png)
+
+Dataset is used on U.S. Bureau of labor statistics,all items in U.S. city average, all urban consumers, not seasonally adjusted during 2011 January to 2021 October.
+
 ```
 View(CPI_U1)
 CPIdata <-CPI_U1$`CPI`
@@ -12,14 +22,6 @@ plot.ts(CPIseries,main="CPI over time", ylab="CPI value", col="blue")
 
 kpss.test(CPIdata)
 ```
-
-![image](https://user-images.githubusercontent.com/100450841/155900844-1449b655-5840-47fe-91ec-eea6d55ad3f9.png)
-
-CPI rose rapidly then fell to the lowest in 2008(financial crisis). In 2021, there is an abnormal rapidly rose showed in this year.
-
-![image](https://user-images.githubusercontent.com/100450841/155901204-3c600cf2-6bbd-4cf2-bbf1-4d7068eb6e09.png)
-
-Dataset is used on U.S. Bureau of labor statistics,all items in U.S. city average, all urban consumers, not seasonally adjusted during 2011 January to 2021 October.
 
 ![image](https://user-images.githubusercontent.com/100450841/155901269-b092c40f-da78-4c26-89be-e626621012ea.png)
 
