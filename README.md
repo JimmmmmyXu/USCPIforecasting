@@ -40,6 +40,21 @@ ADF: h0: no unit root. h1: has a unit root.
 
 KPSS cannot reject null, ADF reject null
 
+```
+logCPI<-log(CPIdata)
+logCPIseries<-ts(logCPI,start=c(2011, as.numeric(format(inds[1], "%j"))),frequency=12)
+plot.ts(logCPIseries,main="CPI over time(logged)", ylab="Logged CPI value", col="blue")
+
+
+diffCPI<-diff(logCPI)
+diffCPIseries<-ts(diffCPI,start=c(2011, as.numeric(format(inds[1], "%j"))),frequency=12)
+plot.ts(diffCPIseries,main="CPI over time(differenced and logged)", ylab="Differenced and Logged CPI value", col="blue")
+
+
+kpss.test(diffCPI)
+adf.test(diffCPI)
+```
+
 ![image](https://user-images.githubusercontent.com/100450841/155901401-1830e928-64c7-40d7-a8cb-37d86af19238.png)
 
 Graph2: Differences and Logged Consumer Price Index Plot
@@ -57,7 +72,30 @@ ADF test: 0.01
 
 
 
+
 Seasonal Test:
+
+```
+CPIcomponents <- decompose(CPIseries)
+plot(CPIcomponents)
+
+season<-CPIcomponents$seasonal
+plot(season)
+
+trend<-CPIcomponents$trend
+plot(trend)
+
+cycle<-CPIcomponents$random
+plot(cycle)
+
+Nosea<-auto.arima(CPIdata,seasonal=F)
+checkresiduals(Nosea)
+summary(Nosea)
+
+Tsea<-auto.arima(CPIdata,seasonal=T)
+checkresiduals(Tsea,main = "Season")
+summary(Tsea)
+```
 
 ![image](https://user-images.githubusercontent.com/100450841/155901585-34e5e644-a2f4-4fc6-82f5-1004b0bdb520.png)
 
@@ -74,10 +112,13 @@ Graph5: Residuals for Consumer Price Index with Seasonal
 There is no obvious differece between two plots.
 
 
-
- 
 ACF PACF plot:
 
+```
+acf(diffCPI,main = "ACF")
+pacf(diffCPI,main = "PACF")
+```
+ 
 ![image](https://user-images.githubusercontent.com/100450841/155901686-15c3c412-f04e-42c5-932d-e058fe9d67d7.png)
 
 Graph6: Auto correlation function lag plot
@@ -92,6 +133,23 @@ Lag ACF at 0,1,11,12.  Lag PACF at 1,2,11
 
 
 Find out best model by AIC BIC:
+
+```
+AIC(model1)
+BIC(model1)
+AIC(model2)
+BIC(model2)
+AIC(model3)
+BIC(model3)
+AIC(model4)
+BIC(model4)
+AIC(model5)
+BIC(model5)
+AIC(model6)
+BIC(model6)
+AIC(model7)
+BIC(model7)
+```
 
 ![image](https://user-images.githubusercontent.com/100450841/155901824-93fc9e5a-3c81-4bcd-adc9-f121e59f405f.png)
 
@@ -118,3 +176,4 @@ Prediction of CPI in 10 month :
 ![image](https://user-images.githubusercontent.com/100450841/155901952-ad82dd61-6c9f-4819-815c-d96af32033f7.png)
 
 Graph8: ARIMA(11,1,12) Forecasting Result of Consumer Price Index
+
